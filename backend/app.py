@@ -1,9 +1,11 @@
 from flask import Flask
+from flask_cors import CORS
 
-import routes
+from routes import bp
+
 app = Flask(__name__)
+CORS(app)
+app.register_blueprint(bp)
 
-app.register_blueprint(routes.bp)
-
-if __name__ == '__main__':
-    app.run()
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=False)

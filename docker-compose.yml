@@ -1,0 +1,22 @@
+services:
+  backend:
+    build: ./backend
+    container_name: traffic_backend
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build: ./frontend
+    container_name: traffic_frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+  sender:
+    build: ./sender
+    container_name: traffic_sender
+    environment:
+      - BACKEND_URL=http://backend:5000/packet
+    depends_on:
+      - backend

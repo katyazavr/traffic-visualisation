@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Traffic Visualisation</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+    <main class="layout">
+        <section class="panel panel-left">
+            <h1>Traffic Visualisation</h1>
+            <p>Live stream of incoming packets on a Three.js globe.</p>
+            <div class="controls">
+                <label>
+                    <input type="checkbox" id="suspiciousOnly" />
+                    Show suspicious only
+                </label>
+                <button id="pauseBtn">Pause stream</button>
+            </div>
+            <div class="stats">
+                <p>Total packets: <span id="totalPackets">0</span></p>
+                <p>Suspicious packets: <span id="suspiciousPackets">0</span></p>
+            </div>
+        </section>
+        <section id="globeContainer" class="globe-wrap"></section>
+        <aside class="panel panel-right">
+            <h2>Топ‑5 регионов по частоте</h2>
+            <p class="panel-hint">Обновляется по мере поступления пакетов</p>
+            <ol id="topRegions"></ol>
+        </aside>
+    </main>
+
+    <script src="https://unpkg.com/three@0.164.1/build/three.min.js"></script>
+    <script src="https://unpkg.com/globe.gl"></script>
+    <script src="./main.js"></script>
+</body>
+</html>
